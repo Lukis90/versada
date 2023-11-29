@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+    exchange:
+        restart: always
+        container_name: exchange
+        image: lukas/exchange
+        network_mode: host
+        build:
+            context: "exchange/"
+
+    accounts:
+        restart: always
+        container_name: accounts
+        image: lukas/accounts
+        network_mode: host
+        build:
+            context: "accounts/"
+        depends_on:
+            - mongo
+            - exchange
+        env_file:
+            - ".env"
+
+    mongo:
+        image: mongo
+        restart: always
+        network_mode: host
+        volumes:
+            - mongodata:/data/db
+            - ./initdb/init.js:/docker-entrypoint-initdb.d/init.js:ro
+
+volumes:
+    mongodata:

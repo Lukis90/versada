@@ -1,0 +1,6 @@
+**/.env
+**/.isort.cfg
+**/__pycache__
+**/.pytest_cache
+**/mongodata
+.vscode

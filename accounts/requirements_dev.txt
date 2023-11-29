@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pymongo
+python-dotenv
+requests
+python-multipart
+
+#testing
+pytest
+anyio
+pytest-asyncio
+pytest-mock
+httpx
